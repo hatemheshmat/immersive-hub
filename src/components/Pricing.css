@@ -1,0 +1,211 @@
+.pricing-section {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    background-color: var(--color-bg-deep);
+    /* Uses the off-white background */
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.pricing-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    margin-bottom: 1rem;
+    color: var(--color-primary-green);
+}
+
+.pricing-header p {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+}
+
+/* Pricing Grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background: #fff;
+    border-radius: 20px;
+    border: 1px solid rgba(15, 41, 34, 0.1);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.pricing-card.popular {
+    border: 2px solid var(--color-primary-green);
+    transform: scale(1.05);
+    /* Slightly larger */
+}
+
+.pricing-card.premium {
+    border: 1px solid rgba(238, 139, 34, 0.3);
+}
+
+/* Badges */
+.popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary-green);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(15, 41, 34, 0.2);
+}
+
+/* Tier Typography */
+.tier-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.tier-name.gradient-text {
+    color: var(--color-primary-green);
+}
+
+.tier-name.premium-text {
+    color: var(--color-accent-orange);
+}
+
+.tier-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-green);
+}
+
+/* Price block */
+.tier-price {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+}
+
+.currency {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-right: 6px;
+}
+
+.amount {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-primary-green);
+    line-height: 1;
+}
+
+.period {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-left: 8px;
+}
+
+.tier-desc {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    flex-grow: 0;
+}
+
+/* Feature List */
+.tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.tier-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    line-height: 1.5;
+}
+
+.tier-features li span,
+.tier-features li strong {
+    color: var(--color-text-main);
+}
+
+.check {
+    color: #000;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.check.highlight {
+    color: var(--color-accent-orange);
+}
+
+/* Bonus Box */
+.bonus-box {
+    margin-top: 2rem;
+    background: rgba(238, 139, 34, 0.05);
+    border: 1px dashed rgba(238, 139, 34, 0.4);
+    padding: 1.25rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.bonus-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.bonus-box p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--color-primary-green);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+
+    .pricing-card.popular {
+        transform: none;
+    }
+
+    .pricing-card.popular:hover {
+        transform: translateY(-5px);
+    }
+}
