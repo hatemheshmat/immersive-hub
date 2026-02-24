@@ -1,0 +1,141 @@
+.approach-section {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+}
+
+.approach-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.approach-header h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-primary-green);
+}
+
+.approach-header p {
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+}
+
+.approach-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.approach-image-container {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.approach-image {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.image-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 40px);
+    height: calc(100% + 40px);
+    background: radial-gradient(circle at center, rgba(34, 139, 34, 0.2), transparent 70%);
+    z-index: 1;
+    filter: blur(20px);
+}
+
+.approach-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.approach-card {
+    position: relative;
+    padding: 2.5rem 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.approach-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-green);
+}
+
+.approach-card.old-way {
+    border-left: 4px solid var(--color-accent-orange);
+}
+
+.approach-card.new-way {
+    border-left: 4px solid var(--color-primary-green);
+    background: linear-gradient(135deg, rgba(34, 139, 34, 0.05), rgba(7, 33, 26, 0.02));
+}
+
+.card-badge {
+    position: absolute;
+    top: -15px;
+    left: 30px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-badge.warning {
+    background: var(--color-accent-orange);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(238, 139, 34, 0.3);
+}
+
+.card-badge.success {
+    background: var(--color-primary-green);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(15, 41, 34, 0.3);
+}
+
+.approach-card p {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.approach-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.approach-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.icon-warning {
+    color: var(--color-accent-orange);
+    flex-shrink: 0;
+}
+
+.icon-success {
+    color: var(--color-primary-green);
+    flex-shrink: 0;
+}
+
+@media (max-width: 968px) {
+    .approach-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
