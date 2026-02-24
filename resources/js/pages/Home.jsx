@@ -5,6 +5,7 @@ import ImmersiveLibrary from '../components/ImmersiveLibrary';
 import AIAdvantage from '../components/AIAdvantage';
 import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
+import BookingForm from '../components/BookingForm';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <AIAdvantage />
             <Testimonials />
             <Pricing />
+            <BookingForm />
         </main>
     );
 };
