@@ -88,6 +88,18 @@ Route::get('/api/seed-admin', function () {
     return "Admin and Sales accounts have been successfully installed to the database. You may now log in.";
 });
 
+Route::get('/api/debug-login', function () {
+    $admin = \App\Models\User::where('email', 'admin@immersivehub.org')->first();
+    $sales = \App\Models\User::where('email', 'sales@immersivehub.org')->first();
+
+    return [
+    'admin_exists' => (bool)$admin,
+    'admin_hash' => $admin ? $admin->password : null,
+    'admin_check' => $admin ?\Illuminate\Support\Facades\Hash::check('ImmersiveHubAdmin2026!', $admin->password) : false,
+    'sales_exists' => (bool)$sales,
+    ];
+});
+
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
