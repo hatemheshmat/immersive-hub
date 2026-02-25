@@ -12,19 +12,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::firstOrCreate(
+        \App\Models\User::updateOrCreate(
         ['email' => 'admin@immersivehub.org'],
         [
             'name' => 'Admin',
-            'password' => \Illuminate\Support\Facades\Hash::make('ImmersiveHubAdmin2026!'),
+            'password' => 'ImmersiveHubAdmin2026!',
         ]
         );
 
-        \App\Models\User::firstOrCreate(
+        \App\Models\User::updateOrCreate(
         ['email' => 'sales@immersivehub.org'],
         [
             'name' => 'Sales Team',
-            'password' => \Illuminate\Support\Facades\Hash::make('ImmersiveHubSales2026!'),
+            'password' => 'ImmersiveHubSales2026!',
         ]
         );
     }
