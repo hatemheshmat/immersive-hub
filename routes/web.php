@@ -33,6 +33,24 @@ Route::post('/api/bookings', function (\Illuminate\Http\Request $request) {
     }
 })->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
+Route::post('/api/contacts', function (\Illuminate\Http\Request $request) {
+    try {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'school' => 'nullable|string|max:255',
+            'role' => 'nullable|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $contact = \App\Models\Contact::create($data);
+        return response()->json(['message' => 'Message sent successfully', 'contact' => $contact], 201);
+    }
+    catch (\Exception $e) {
+        return response()->json(['message' => 'Error sending message', 'error' => $e->getMessage()], 400);
+    }
+})->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');

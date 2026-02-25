@@ -1,20 +1,29 @@
 import React, { useState } from 'react';
-import { Send, MapPin, Phone, Mail, MessageSquare, User, Building2, ArrowRight } from 'lucide-react';
+import axios from 'axios';
+import { Send, MapPin, Phone, Mail, MessageSquare, User, Building2, ArrowRight, Facebook, Instagram, Linkedin } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '', email: '', school: '', role: '', message: ''
     });
-    const [submitted, setSubmitted] = useState(false);
+    const [status, setStatus] = useState('idle');
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        setStatus('submitting');
+        try {
+            await axios.post('/api/contacts', formData);
+            setSubmitted(true);
+            setStatus('idle');
+        } catch (error) {
+            console.error('Failure saving contact info:', error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -34,7 +43,7 @@ const Contact = () => {
                         </div>
                         <div>
                             <h4>Visit Us</h4>
-                            <p>45 Cornish El Nile St., Maadi,<br />Giza Governorate 4211201</p>
+                            <p>1171 9th Street Next to Misr Insurance Club,<br />Mokattam, Cairo</p>
                         </div>
                     </div>
 
@@ -61,10 +70,10 @@ const Contact = () => {
                     </div>
 
                     {/* Quick links */}
-                    <div className="contact-social-row">
-                        <a href="https://www.facebook.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-chip">Facebook</a>
-                        <a href="https://www.instagram.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-chip">Instagram</a>
-                        <a href="https://www.linkedin.com/company/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-chip">LinkedIn</a>
+                    <div className="contact-social-row" style={{ display: 'flex', gap: '15px' }}>
+                        <a href="https://www.facebook.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><Facebook size={28} /></a>
+                        <a href="https://www.instagram.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><Instagram size={28} /></a>
+                        <a href="https://www.linkedin.com/company/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Linkedin size={28} /></a>
                     </div>
                 </div>
 
@@ -111,8 +120,15 @@ const Contact = () => {
                                 <label><MessageSquare size={14} /> Message</label>
                                 <textarea name="message" rows="4" placeholder="Tell us about your school's needs..." value={formData.message} onChange={handleChange} required />
                             </div>
-                            <button type="submit" className="cta-button contact-submit-btn">
-                                Send Message <ArrowRight size={18} />
+
+                            {status === 'error' && (
+                                <div style={{ color: '#ef4444', marginBottom: '15px', fontSize: '14px', textAlign: 'center' }}>
+                                    There was an error sending your message. Please try again.
+                                </div>
+                            )}
+
+                            <button type="submit" className="cta-button contact-submit-btn" disabled={status === 'submitting'}>
+                                {status === 'submitting' ? 'Sending...' : 'Send Message'} <ArrowRight size={18} />
                             </button>
                         </form>
                     )}

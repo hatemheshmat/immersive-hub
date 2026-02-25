@@ -1,5 +1,5 @@
 import React from 'react';
-import { Headset, MapPin, Phone, Mail } from 'lucide-react';
+import { Headset, MapPin, Phone, Mail, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
@@ -43,7 +43,8 @@ const Footer = () => {
                         <h4>Contact Info</h4>
                         <div className="contact-item">
                             <MapPin className="icon" size={20} />
-                            <p>45 Cornish El Nile St., Maadi,<br /> Giza Governorate 4211201</p>
+                            <MapPin className="icon" size={20} />
+                            <p>1171 9th Street Next to Misr Insurance Club,<br /> Mokattam, Cairo</p>
                         </div>
                         <div className="contact-item">
                             <Phone className="icon" size={20} />
@@ -62,10 +63,10 @@ const Footer = () => {
             <div className="footer-bottom">
                 <div className="bottom-container">
                     <p>&copy; {new Date().getFullYear()} Immersive Hub. All rights reserved.</p>
-                    <div className="social-links">
-                        <a href="https://www.facebook.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer">Facebook</a>
-                        <a href="https://www.instagram.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                        <a href="https://www.linkedin.com/company/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <div className="social-links" style={{ display: 'flex', gap: '15px' }}>
+                        <a href="https://www.facebook.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={24} /></a>
+                        <a href="https://www.instagram.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={24} /></a>
+                        <a href="https://www.linkedin.com/company/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={24} /></a>
                     </div>
                 </div>
             </div>
