@@ -85,7 +85,7 @@ Route::get('/api/admin/dashboard-data', function () {
 
 Route::get('/api/seed-admin', function () {
     try {
-        $exitCode = \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'UserSeeder']);
+        $exitCode = \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'UserSeeder', '--force' => true]);
         $output = \Illuminate\Support\Facades\Artisan::output();
         return "Admin and Sales accounts installed. Exit Code: $exitCode. Output: " . $output;
     }
