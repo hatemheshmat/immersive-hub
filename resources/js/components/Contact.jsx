@@ -8,6 +8,7 @@ const Contact = () => {
         name: '', email: '', school: '', role: '', message: ''
     });
     const [status, setStatus] = useState('idle');
+    const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
