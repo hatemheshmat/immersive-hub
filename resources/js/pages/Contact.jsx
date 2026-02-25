@@ -7,7 +7,7 @@ const Contact = () => {
     }, []);
 
     return (
-        <main style={{ paddingTop: '80px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <main style={{ paddingTop: '120px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             <ContactForm />
         </main>
     );

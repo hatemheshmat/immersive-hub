@@ -43,7 +43,6 @@ const Footer = () => {
                         <h4>Contact Info</h4>
                         <div className="contact-item">
                             <MapPin className="icon" size={20} />
-                            <MapPin className="icon" size={20} />
                             <p>1171 9th Street Next to Misr Insurance Club,<br /> Mokattam, Cairo</p>
                         </div>
                         <div className="contact-item">
