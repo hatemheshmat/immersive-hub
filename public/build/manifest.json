@@ -13,12 +13,12 @@
     "src": "resources/js/assets/logo.png"
   },
   "resources/js/main.jsx": {
-    "file": "assets/main-BYvR2_qU.js",
+    "file": "assets/main-DS3cMV-1.js",
     "name": "main",
     "src": "resources/js/main.jsx",
     "isEntry": true,
     "css": [
-      "assets/main-Dr89Sg2N.css"
+      "assets/main-DOvnmIxw.css"
     ],
     "assets": [
       "assets/logo-DqwejiTY.png"

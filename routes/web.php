@@ -51,6 +51,43 @@ Route::post('/api/contacts', function (\Illuminate\Http\Request $request) {
     }
 })->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
+Route::post('/api/login', function (\Illuminate\Http\Request $request) {
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (\Illuminate\Support\Facades\Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return response()->json(['message' => 'Logged in successfully', 'user' => \Illuminate\Support\Facades\Auth::user()]);
+    }
+
+    return response()->json(['message' => 'Invalid credentials'], 401);
+})->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
+Route::post('/api/logout', function (\Illuminate\Http\Request $request) {
+    \Illuminate\Support\Facades\Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return response()->json(['message' => 'Logged out successfully']);
+})->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
+Route::get('/api/user', function (\Illuminate\Http\Request $request) {
+    return $request->user();
+})->middleware('auth');
+
+Route::get('/api/admin/dashboard-data', function () {
+    return response()->json([
+    'bookings' => \App\Models\Booking::orderBy('created_at', 'desc')->get(),
+    'contacts' => \App\Models\Contact::orderBy('created_at', 'desc')->get()
+    ]);
+})->middleware('auth');
+
+Route::get('/api/seed-admin', function () {
+    \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'UserSeeder']);
+    return "Admin and Sales accounts have been successfully installed to the database. You may now log in.";
+});
+
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any', '.*');
