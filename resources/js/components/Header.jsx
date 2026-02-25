@@ -7,7 +7,7 @@ import logoImg from '../assets/logo.png';
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
   { label: 'Our Library', href: '/library' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Contact Us', href: '/contact-us' },
 ];
 
 const Header = () => {
@@ -45,7 +45,7 @@ const Header = () => {
         </nav>
 
         <div className="cta-container">
-          <Link to="/contact" className="cta-button header-cta">Request Free Demo</Link>
+          <Link to="/contact-us" className="cta-button header-cta">Request Free Demo</Link>
         </div>
 
         {/* Mobile toggle */}
@@ -66,7 +66,7 @@ const Header = () => {
               {item.label}
             </Link>
           ))}
-          <Link to="/contact" className="cta-button mobile-cta" onClick={() => setIsMobileOpen(false)}>Request Free Demo</Link>
+          <Link to="/contact-us" className="cta-button mobile-cta" onClick={() => setIsMobileOpen(false)}>Request Free Demo</Link>
         </div>
       )}
     </header>

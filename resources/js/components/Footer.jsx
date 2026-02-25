@@ -28,7 +28,7 @@ const Footer = () => {
                         <h4>Quick Links</h4>
                         <Link to="/">Home</Link>
                         <Link to="/library">Our Library</Link>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/contact-us">Contact Us</Link>
                     </div>
 
                     <div className="link-column">
