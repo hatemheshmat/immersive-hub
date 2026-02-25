@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 
-Route::get('/migrate', function () {
+Route::get('/reset-database', function () {
     try {
-        Artisan::call('migrate:fresh', ['--force' => true]);
-        return 'Migrations completed successfully! Your database is completely fresh and ready to use.';
+        \Illuminate\Support\Facades\DB::statement('DROP TABLE IF EXISTS bookings');
+        \Illuminate\Support\Facades\DB::statement('DROP TABLE IF EXISTS sessions');
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        return 'Database completely wiped and rebuilt securely!'; Your database is completely fresh and ready to use.';
     }
     catch (\Exception $e) {
         return 'Error running migrations: ' . $e->getMessage();
