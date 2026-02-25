@@ -9,7 +9,7 @@ Route::get('/reset-database', function () {
         \Illuminate\Support\Facades\DB::statement('DROP TABLE IF EXISTS bookings');
         \Illuminate\Support\Facades\DB::statement('DROP TABLE IF EXISTS sessions');
         \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
-        return 'Database completely wiped and rebuilt securely!'; Your database is completely fresh and ready to use.';
+        return 'Database completely wiped and rebuilt securely!';
     }
     catch (\Exception $e) {
         return 'Error running migrations: ' . $e->getMessage();
