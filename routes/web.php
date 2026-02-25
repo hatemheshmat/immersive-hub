@@ -84,8 +84,14 @@ Route::get('/api/admin/dashboard-data', function () {
 })->middleware('auth');
 
 Route::get('/api/seed-admin', function () {
-    \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'UserSeeder']);
-    return "Admin and Sales accounts have been successfully installed to the database. You may now log in.";
+    try {
+        $exitCode = \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'UserSeeder']);
+        $output = \Illuminate\Support\Facades\Artisan::output();
+        return "Admin and Sales accounts installed. Exit Code: $exitCode. Output: " . $output;
+    }
+    catch (\Exception $e) {
+        return "Error running seeder: " . $e->getMessage() . " -- Trace: " . $e->getTraceAsString();
+    }
 });
 
 Route::get('/api/debug-login', function () {
