@@ -1,27 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette */
-  --color-bg-deep: #FDFCF8;
-  /* Light off-white from image 1 */
-  --color-bg-dark: #F2EFE9;
-  /* Slightly darker for contrast areas */
-  --color-primary-green: #8A2BE2;
-  /* Vivid purple */
-  --color-primary-blue: #00BFFF;
-  /* Light cyan */
-  --color-accent-orange: #8A2BE2;
-  /* Purple accent */
-  --color-accent-yellow: #00BFFF;
-  --color-text-main: #1e1b4b;
-  /* Dark text */
-  --color-text-muted: #6b7280;
-  /* Muted dark text */
+  /* Color Palette - Spatial Computing */
+  --color-bg-deep: #0F172A;
+  --color-bg-dark: #1E293B;
+  --color-primary-brand: hsl(270, 70%, 55%);
+  --color-secondary-cyan: hsl(190, 80%, 50%);
+  --color-text-main: #F8FAFC;
+  --color-text-muted: #94A3B8;
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.8);
-  --glass-blur: blur(16px);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(24px);
 
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -45,6 +36,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Deep interactive gradient */
   background: radial-gradient(circle at top right, var(--color-bg-dark) 0%, var(--color-bg-deep) 100%);
 }
 
@@ -56,7 +48,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-primary-green);
+  color: var(--color-secondary-cyan);
 }
 
 h1,
@@ -65,9 +57,11 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Outfit', 'Space Grotesk', sans-serif;
   line-height: 1.2;
   margin-bottom: 0.5em;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* Base App Layout */
@@ -79,28 +73,32 @@ h6 {
 
 /* Utility Classes */
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-green), var(--color-primary-blue));
+  background: linear-gradient(135deg, var(--color-secondary-cyan), var(--color-primary-brand));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .cta-button {
-  background: linear-gradient(135deg, var(--color-accent-orange), var(--color-accent-yellow));
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  /* Pill shape for Spatial OS */
+  padding: 12px 28px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
 }
 
 .section {
@@ -108,6 +106,8 @@ h6 {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .glass-card {
@@ -116,21 +116,25 @@ h6 {
   -webkit-backdrop-filter: var(--glass-blur);
   /* For Safari */
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  border-radius: 20px;
+  /* Apple Vision Pro uses soft continuous roundings */
+  padding: 2.5rem;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
 .glass-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.08);
+  /* slight glow */
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
 
   to {
