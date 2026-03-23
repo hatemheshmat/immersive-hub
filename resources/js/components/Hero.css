@@ -1,248 +1,317 @@
+/* Hero.css */
+.hero-wrapper-box {
+    padding: 1rem;
+    width: 100%;
+    min-height: 100vh;
+}
+
 .hero-section {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10rem 0 6rem 0;
+    /* plenty of top space for 3-pill navbar */
+    background:
+        radial-gradient(circle at top left, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at top right, rgba(0, 119, 255, 0.1) 0%, transparent 35%),
+        radial-gradient(circle at 85% 90%, rgba(0, 255, 136, 0.06) 0%, transparent 30%),
+        rgba(5, 10, 18, 0.6);
+    border-radius: 40px;
     overflow: hidden;
-    padding-top: 6rem;
-    padding-bottom: 2rem;
+    min-height: calc(100vh - 2rem);
+    display: flex;
+    align-items: center;
+    animation: fadeInUp .8s cubic-bezier(.16, 1, .3, 1) forwards;
 }
 
-/* Base layer: The VR GIF Placeholder */
-.hero-background-media {
+/* Starfield Overlay */
+.hero-section::before {
+    content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 80px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 150px 160px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 250px 120px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(1.5px 1.5px at 320px 290px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2.5px 2.5px at 450px 10px, #fff, rgba(0, 0, 0, 0));
+    background-size: 400px 400px;
+    opacity: 0.35;
     z-index: 0;
+    pointer-events: none;
+    animation: starFloat 20s linear infinite;
+}
+
+@keyframes starFloat {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -400px -400px;
+    }
+}
+
+.hero-container {
     width: 100%;
-    height: 100%;
 }
 
-.hero-bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* This makes the 16:9 crop perfectly on mobile! */
-    object-position: center;
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
 }
 
-.hero-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.4) 50%, rgba(15, 23, 42, 0.9) 100%);
-    backdrop-filter: blur(8px);
-    /* slightly blurs the VR background to bring focus to the UI */
-}
-
-/* Foreground content container */
-.hero-content {
+/* LEFT COLUMN */
+.hero-content-col {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    max-width: 1100px;
-    z-index: 1;
-    position: relative;
-    gap: 3rem;
+    align-items: flex-start;
 }
 
-/* Main floating Glass Panel for narrative */
-.hero-glass-container {
-    padding: 4rem 2rem;
+.caption-tag-row {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 100%;
-}
-
-/* Badge */
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 24px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 500;
+    gap: 0.75rem;
     margin-bottom: 2rem;
-    letter-spacing: 0.5px;
 }
 
-.text-cyan {
-    color: var(--color-secondary-cyan);
-}
 
-/* Headline */
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    margin-bottom: 1.5rem;
-    color: #fff;
-    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Subtitle */
-.hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: var(--color-text-muted);
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-}
-
-.hero-subtitle strong {
-    color: #fff;
-    font-weight: 600;
-}
-
-/* Curriculum Badges */
-.hero-curriculum-badges {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-}
-
-.curriculum-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    background: rgba(15, 23, 42, 0.5);
+.hero-caption-tag {
+    border-radius: 12px;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 3px solid #fff;
-    /* color injected inline */
-    color: #fff;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-/* CTA Row */
-.hero-cta-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.hero-cta-primary {
-    background: var(--color-primary-brand);
-    border-color: var(--color-primary-brand);
-    color: #fff;
     display: flex;
     align-items: center;
-    gap: 8px;
 }
 
-.hero-cta-primary:hover {
-    background: hsl(270, 70%, 65%);
-    border-color: hsl(270, 70%, 65%);
-}
-
-.hero-cta-secondary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Features Row (3 glass cards) */
-.hero-features-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    width: 100%;
-}
-
-.feature-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-}
-
-.feature-icon-box {
-    width: 64px;
-    height: 64px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    color: var(--color-secondary-cyan);
-}
-
-.feature-item h4 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    color: #fff;
-}
-
-.feature-item p {
-    color: var(--color-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* Stats Box (unified glass bar) */
-.hero-stats-bar {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 2.5rem;
-}
-
-.hero-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.hero-stat-value {
-    font-family: 'Space Grotesk', 'Outfit', sans-serif;
-    font-size: 3rem;
+.hero-caption-tag .c1 {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
     font-weight: 700;
 }
 
-.hero-stat-label {
-    font-size: 1rem;
-    color: var(--color-text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
+.hero-title-main {
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.text-gradient-blue {
+    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle-split {
+    max-width: 480px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 3.5rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Email Form */
+.hero-email-form {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.hero-input-wrapper {
+    flex: 1;
+    background: #171d24;
+    /* darker pill */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 0.25rem;
+}
+
+.hero-email-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.hero-email-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
     letter-spacing: 1px;
+    font-weight: 600;
 }
 
-@media (max-width: 900px) {
-    .hero-features-row {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-stats-bar {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
+.hero-cta-btn {
+    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 1.1rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.3s ease;
+    white-space: nowrap;
 }
 
-@media (max-width: 600px) {
-    .hero-cta-row {
+.hero-cta-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+}
+
+/* Curriculum Checks */
+.hero-curriculum-checks {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    flex-wrap: wrap;
+}
+
+.curriculum-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.tracking-wide {
+    letter-spacing: 0.5px;
+}
+
+/* RIGHT COLUMN */
+.hero-image-col {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-hero-img-wrap {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 4 / 4;
+    width: 100%;
+    max-width: 550px;
+}
+
+.hero-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Floating Stat Card */
+.hero-floating-stat {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background: rgba(30, 35, 45, 0.9) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 220px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-live-exp-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero-green-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+}
+
+.hero-green-text {
+    color: #10b981;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-content-col {
+        align-items: center;
+    }
+
+    .caption-tag-row {
+        justify-content: center;
+    }
+
+    .hero-subtitle-split {
+        margin: 0 auto 3rem auto;
+    }
+
+    .hero-email-form {
         flex-direction: column;
         width: 100%;
     }
 
-    .hero-cta-row button {
+    .hero-input-wrapper,
+    .hero-cta-btn {
         width: 100%;
+    }
+
+    .hero-curriculum-checks {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 0 auto;
+    }
+
+    .hero-image-col {
+        justify-content: center;
+    }
+
+    .hero-hero-img-wrap {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title-main {
+        font-size: 3rem;
+    }
+
+    .hero-section {
+        padding: 8rem 0 4rem 0;
+        border-radius: 20px;
+    }
+
+    .hero-floating-stat {
+        bottom: 1rem;
+        left: 1rem;
+        padding: 1rem;
     }
 }

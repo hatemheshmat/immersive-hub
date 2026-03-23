@@ -1,219 +1,311 @@
+/* ── Outer Section ── */
 .ai-section {
-    background: linear-gradient(to bottom, var(--color-bg-deep), var(--color-bg-dark));
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.ai-container {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-}
-
-.ai-content {
-    flex: 1;
-}
-
-.ai-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 0;
     position: relative;
-    height: 500px;
+    z-index: 5;
 }
 
-.ai-badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background: rgba(34, 139, 34, 0.1);
-    color: var(--color-primary-green);
-    border: 1px solid rgba(34, 139, 34, 0.3);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-}
-
-.ai-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    color: var(--color-primary-green);
-}
-
-.ai-description {
-    color: var(--color-text-muted);
-    font-size: 1.15rem;
-    line-height: 1.7;
-    margin-bottom: 3rem;
-    max-width: 600px;
-}
-
-.ai-features-grid {
+/* ── Two-Column Layout ── */
+.ai-two-col {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
-.ai-feature {
-    background: var(--color-bg-deep);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-}
-
-.ai-feature:hover {
-    transform: translateY(-5px);
-    background: #fff;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border-color: rgba(34, 139, 34, 0.1);
-}
-
-.ai-icon {
-    margin-bottom: 1rem;
-    display: block;
-}
-
-.ai-feature h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-primary-green);
-}
-
-.ai-feature p {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.text-primary {
-    color: var(--color-primary-green);
-}
-
-.text-accent {
-    color: var(--color-accent-orange);
-}
-
-/* Clean Mockup Visual */
-.clean-mockup-container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 4rem;
     align-items: center;
+    width: 100%;
 }
 
-.mockup-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+/* ══════════════════════════════
+   LEFT COLUMN
+══════════════════════════════ */
+.ai-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-card {
-    width: 280px;
-    height: 320px;
-    padding: 2rem;
-    z-index: 2;
     gap: 1.5rem;
 }
 
-.mockup-icon {
-    margin-bottom: 0.5rem;
+/* Badge */
+.ai-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 16px;
+    background: rgba(59, 130, 246, 0.12);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: fit-content;
 }
 
-.mockup-icon.primary {
-    color: var(--color-primary-green);
-}
-
-.mockup-icon.accent {
-    color: var(--color-accent-orange);
-}
-
-.mockup-icon.success {
-    color: var(--color-primary-green);
-}
-
-.mockup-line {
-    height: 12px;
-    border-radius: 6px;
-    background: var(--color-bg-dark);
-}
-
-.w-full {
-    width: 100%;
-}
-
-.w-3-4 {
-    width: 75%;
-}
-
-.w-1-2 {
-    width: 50%;
-}
-
-.floating-card {
-    position: absolute;
-    padding: 1rem 1.5rem;
-    flex-direction: row;
-    gap: 1rem;
-    z-index: 3;
-    font-weight: 600;
+/* Big heading */
+.ai-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
     color: var(--color-text-main);
-    animation: float 6s ease-in-out infinite;
+    margin: 0;
 }
 
-.floating-card.card-1 {
-    top: 10%;
-    left: -10%;
-    animation-delay: 0s;
+/* Description */
+.ai-description {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0;
+    max-width: 480px;
 }
 
-.floating-card.card-2 {
-    bottom: 15%;
-    right: -5%;
-    animation-delay: 3s;
+/* 2×2 Feature mini-cards */
+.ai-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+.ai-feature-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
+.ai-feature-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.ai-feat-icon {
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #60a5fa;
+    flex-shrink: 0;
+}
+
+.ai-feature-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.ai-feature-card p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ══════════════════════════════
+   RIGHT COLUMN — App Mockup Panel
+══════════════════════════════ */
+.ai-right {
+    position: relative;
+}
+
+.ai-mockup-panel {
+    background: #0d1b2a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow behind panel content */
+.ai-panel-glow {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.15), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* All panel content above glow */
+.ai-profile-row,
+.ai-progress-block,
+.ai-rec-box,
+.ai-insight-row {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Student Profile Row ── */
+.ai-profile-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ai-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa, #818cf8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.ai-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-grow: 1;
+}
+
+.ai-student-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.ai-focus {
+    font-size: 0.78rem;
+    color: #34d399; /* green for "high" focus */
+    font-weight: 600;
+}
+
+.ai-subject-badge {
+    padding: 4px 14px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* ── Progress Bar ── */
+.ai-progress-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ai-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+}
+
+.ai-progress-pct {
+    color: var(--color-text-main);
+    font-weight: 700;
+}
+
+.ai-progress-track {
+    height: 8px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.ai-progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #60a5fa, #818cf8);
+    transition: width 1s ease;
+}
+
+/* ── AI Recommendation Box ── */
+.ai-rec-box {
+    background: rgba(96, 165, 250, 0.08);
+    border: 1px solid rgba(96, 165, 250, 0.2);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+}
+
+.ai-rec-box p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.ai-rec-box strong {
+    color: var(--color-text-main);
+}
+
+/* ── Insight Stats Row ── */
+.ai-insight-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 1.25rem;
+}
+
+.ai-insight-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ai-ins-val {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    line-height: 1;
+}
+
+.ai-ins-label {
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    line-height: 1.3;
+}
+
+.ai-ins-delta {
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.ai-ins-delta.positive { color: #34d399; }
+.ai-ins-delta.negative { color: #f87171; }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
 @media (max-width: 1024px) {
-    .ai-container {
-        flex-direction: column;
+    .ai-two-col {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
-
-    .ai-visual {
-        height: 400px;
-        width: 100%;
-        margin-top: 2rem;
+    .ai-description {
+        max-width: 100%;
     }
 }
 
 @media (max-width: 600px) {
     .ai-features-grid {
         grid-template-columns: 1fr;
+    }
+    .ai-insight-row {
+        grid-template-columns: 1fr 1fr;
     }
 }

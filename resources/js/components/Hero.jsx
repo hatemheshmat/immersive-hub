@@ -1,121 +1,91 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Play, BookOpen, Headset, Cpu } from 'lucide-react';
+import { CircleCheck } from 'lucide-react';
 import './Hero.css';
-
-const CURRICULUM_BADGES = [
-    { label: 'NGSS', color: '#00BFFF' },
-    { label: 'IB', color: '#8A2BE2' },
-    { label: 'IGCSE', color: '#10b981' },
-    { label: 'National Curriculum', color: '#f59e0b' },
-];
-
-const STATS = [
-    { value: '100+', label: 'VR Experiences' },
-    { value: '50+', label: 'Partner Schools' },
-    { value: '98%', label: 'Teacher Satisfaction' },
-];
-
-// Placeholder for the user's 16:9 VR GIF
-const VR_BACKGROUND_URL = "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?q=80&w=2000&auto=format&fit=crop";
 
 const Hero = () => {
     return (
-        <section className="hero-section">
-            {/* 16:9 VR Background Media Container */}
-            <div className="hero-background-media">
-                <img
-                    src={VR_BACKGROUND_URL}
-                    alt="VR Gameplay Background"
-                    className="hero-bg-image"
-                />
-                <div className="hero-bg-overlay"></div>
-            </div>
+        <div className="hero-wrapper-box">
+            <section className="hero-section">
+                <div className="container hero-container" style={{ maxWidth: '1400px' }}>
+                    <div className="hero-grid animate-fade-in-up">
+                        {/* Left Column Text content */}
+                        <div className="hero-content-col">
+                            <div className="caption-tag-row">
+                                <div className="caption-tag hero-caption-tag">
+                                    <span className="c1 white-60 uppercase">NEXT-GEN EDUCATION</span>
+                                </div>
+                            </div>
 
-            <div className="hero-content section animate-fade-in-up">
-                {/* Floating Glass Container around the main narrative */}
-                <div className="hero-glass-container glass-card">
-                    {/* Badge */}
-                    <div className="hero-badge">
-                        <Sparkles size={16} className="text-cyan" />
-                        <span>Spatial Computing in Education</span>
-                    </div>
+                            <h1 className="h1 white hero-title-main">
+                                Making the<br />
+                                <span className="text-gradient-blue">Impossible</span><br />
+                                Possible
+                            </h1>
 
-                    {/* Headline */}
-                    <h1 className="hero-title">
-                        Immersive learning <br />
-                        <span className="text-gradient">for the next generation</span>
-                    </h1>
+                            <p className="b1-reg white-80 hero-subtitle-split">
+                                Step into the future of learning. We bridge the gap
+                                between imagination and reality with holographic education
+                                environments tailored for every student.
+                            </p>
 
-                    <p className="hero-subtitle">
-                        Transform passive classrooms into <strong>interactive 3D environments.</strong>
-                        <br />
-                        Curriculum-aligned VR experiences powered by intelligent AI educators.
-                    </p>
+                            {/* Email Capture Form */}
+                            <div className="hero-email-form">
+                                <div className="hero-input-wrapper">
+                                    <input
+                                        type="email"
+                                        className="hero-email-input"
+                                        placeholder="ENTER YOUR EMAIL"
+                                    />
+                                </div>
+                                <button className="hero-cta-btn">Start Your Pilot Program</button>
+                            </div>
 
-                    {/* Curriculum Badges */}
-                    <div className="hero-curriculum-badges">
-                        {CURRICULUM_BADGES.map((b) => (
-                            <span
-                                key={b.label}
-                                className="curriculum-badge"
-                                style={{ borderLeftColor: b.color }}
-                            >
-                                {b.label}
-                            </span>
-                        ))}
-                    </div>
+                            {/* Bottom Curriculum Checks */}
+                            <div className="hero-curriculum-checks">
+                                <div className="curriculum-check">
+                                    <CircleCheck size={18} className="white-80" fill="none" />
+                                    <span className="c1 white-80 uppercase font-bold tracking-wide">IB</span>
+                                </div>
+                                <div className="curriculum-check">
+                                    <CircleCheck size={18} className="white-80" fill="none" />
+                                    <span className="c1 white-80 uppercase font-bold tracking-wide">IGCSE</span>
+                                </div>
+                                <div className="curriculum-check">
+                                    <CircleCheck size={18} className="white-80" fill="none" />
+                                    <span className="c1 white-80 uppercase font-bold tracking-wide">NGSS</span>
+                                </div>
+                                <div className="curriculum-check">
+                                    <CircleCheck size={18} className="white-80" fill="none" />
+                                    <span className="c1 white-80 uppercase font-bold tracking-wide">MOE</span>
+                                </div>
+                            </div>
+                        </div>
 
-                    {/* CTA Buttons */}
-                    <div className="hero-cta-row">
-                        <button
-                            className="cta-button hero-cta-primary"
-                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                        >
-                            Request Free Demo <ArrowRight size={18} />
-                        </button>
-                        <button className="hero-cta-secondary cta-button">
-                            <Play size={16} />
-                            Watch 3D Showcase
-                        </button>
+                        {/* Right Column Video */}
+                        <div className="hero-image-col">
+                            <div className="hero-hero-img-wrap">
+                                <video
+                                    src="https://nextworld.b-cdn.net/home-page/next-world-home-hero-video.mp4"
+                                    className="hero-hero-image"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                />
+                                {/* Floating Stats Card */}
+                                <div className="hero-floating-stat glass-card">
+                                    <div className="hero-live-exp-row">
+                                        <div className="hero-green-dot"></div>
+                                        <span className="c1 uppercase hero-green-text">LIVE EXPERIENCE</span>
+                                    </div>
+                                    <h4 className="h4-semi white" style={{ margin: 0, fontSize: '1.15rem' }}>12k+ Active Explorers</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                {/* Feature Items */}
-                <div className="hero-features-row">
-                    <div className="feature-item glass-card">
-                        <div className="feature-icon-box">
-                            <BookOpen className="feature-icon" size={28} />
-                        </div>
-                        <h4>Curriculum Aligned</h4>
-                        <p>Fully mapped to NGSS and local standard requirements.</p>
-                    </div>
-                    <div className="feature-item glass-card">
-                        <div className="feature-icon-box">
-                            <Headset className="feature-icon" size={28} />
-                        </div>
-                        <h4>100+ VR Worlds</h4>
-                        <p>Dozens of high-fidelity spatial experiences for every subject.</p>
-                    </div>
-                    <div className="feature-item glass-card">
-                        <div className="feature-icon-box">
-                            <Cpu className="feature-icon" size={28} />
-                        </div>
-                        <h4>AI Copilot</h4>
-                        <p>Real-time adaptive tutoring inside the headsets.</p>
-                    </div>
-                </div>
-
-                {/* Stats Bar */}
-                <div className="hero-stats-bar glass-card">
-                    {STATS.map((s) => (
-                        <div key={s.label} className="hero-stat">
-                            <span className="hero-stat-value text-gradient">{s.value}</span>
-                            <span className="hero-stat-label">{s.label}</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 

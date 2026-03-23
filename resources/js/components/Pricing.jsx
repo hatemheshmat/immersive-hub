@@ -10,14 +10,13 @@ const Pricing = () => {
                 <p>Billed per semester to align with your school's academic calendar.</p>
             </div>
 
-            <div className="pricing-grid">
-                {/* Tier 1 */}
-                <div className="pricing-card glass-card">
-                    <div className="tier-name">TIER 1</div>
-                    <h3 className="tier-title">Starter</h3>
+            <div className="pricing-grid bento-layout">
+                {/* Lite Tier */}
+                <div className="pricing-card glass-card bento-span-5 hover-lift">
+                    <div className="tier-name">STARTER</div>
                     <div className="tier-price">
                         <span className="currency">EGP</span>
-                        <span className="amount">120,000</span>
+                        <span className="amount">90,000</span>
                         <span className="period">/ Semester</span>
                     </div>
                     <p className="tier-desc">Perfect for schools exploring immersive education with existing hardware.</p>
@@ -29,14 +28,14 @@ const Pricing = () => {
                     </ul>
                 </div>
 
-                {/* Tier 2 */}
-                <div className="pricing-card glass-card popular">
-                    <div className="popular-badge">MOST POPULAR</div>
-                    <div className="tier-name gradient-text">TIER 2</div>
-                    <h3 className="tier-title">Growth</h3>
+                {/* Essentials Tier */}
+                <div className="pricing-card glass-card popular bento-span-7 hover-lift">
+                    <div className="popular-badge">DISCOUNTED</div>
+                    <div className="tier-name gradient-text">GROWTH</div>
                     <div className="tier-price">
                         <span className="currency">EGP</span>
-                        <span className="amount">150,000</span>
+                        <span className="amount" style={{textDecoration: 'line-through', fontSize: '1.5rem', marginRight: '8px', color: 'var(--color-text-muted)'}}>150,000</span>
+                        <span className="amount">120,000</span>
                         <span className="period">/ Semester</span>
                     </div>
                     <p className="tier-desc">The ideal package for expanding your curriculum with custom content.</p>
@@ -48,27 +47,30 @@ const Pricing = () => {
                     </ul>
                 </div>
 
-                {/* Tier 3 */}
-                <div className="pricing-card glass-card premium">
-                    <div className="tier-name premium-text">TIER 3</div>
-                    <h3 className="tier-title">Premium Ecosystem</h3>
-                    <div className="tier-price">
-                        <span className="currency">EGP</span>
-                        <span className="amount">165,000</span>
-                        <span className="period">/ Semester</span>
+                {/* Suite Tier (Full Width Bento Item) */}
+                <div className="pricing-card glass-card premium bento-span-12 hover-lift bento-internal-split">
+                    <div className="bento-split-left">
+                        <div className="tier-name premium-text">PREMIUM ECOSYSTEM</div>
+                        <div className="tier-price">
+                            <span className="currency">EGP</span>
+                            <span className="amount">195,000</span>
+                            <span className="period">/ Semester</span>
+                        </div>
+                        <p className="tier-desc">The ultimate all-in-one immersive learning environment for innovative schools.</p>
                     </div>
-                    <p className="tier-desc">The ultimate all-in-one immersive learning environment for innovative schools.</p>
 
-                    <ul className="tier-features">
-                        <li><Check className="check" size={20} /> Full Access to our entire VR & Mixed Reality Library.</li>
-                        <li><Check className="check" size={20} /> <span>The <strong>AI Educational Agent</strong>: Personalized learning profiles.</span></li>
-                        <li><Check className="check" size={20} /> Includes 2 VR Labs & Extra Mixed Reality Headsets.</li>
-                        <li><Check className="check" size={20} /> 24/7 Premium Customer Support.</li>
-                    </ul>
+                    <div className="bento-split-right">
+                        <ul className="tier-features">
+                            <li><Check className="check" size={20} /> Full Access to our entire VR & Mixed Reality Library.</li>
+                            <li><Check className="check" size={20} /> <span>The <strong>AI Educational Agent</strong>: Personalized learning profiles.</span></li>
+                            <li><Check className="check" size={20} /> Includes 2 VR Labs & Extra Mixed Reality Headsets.</li>
+                            <li><Check className="check" size={20} /> 24/7 Premium Customer Support.</li>
+                        </ul>
 
-                    <div className="bonus-box">
-                        <Gift className="bonus-icon text-accent" size={20} />
-                        <p><strong>Special 1-Year Renewal Bonus:</strong> Sign a full-year contract and receive <strong>3 EXTRA VR Headsets absolutely FREE</strong>!</p>
+                        <div className="bonus-box">
+                            <Gift className="bonus-icon" size={20} />
+                            <p><strong>Special 1-Year Renewal Bonus:</strong> Sign a full-year contract and receive <strong>3 EXTRA VR Headsets absolutely FREE</strong>!</p>
+                        </div>
                     </div>
                 </div>
             </div>

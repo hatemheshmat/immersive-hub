@@ -1,0 +1,89 @@
+.clients-section {
+  padding: 6rem 0;
+  overflow: hidden;
+  background: transparent;
+  width: 100%;
+}
+
+.clients-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+}
+
+.clients-marquee-wrapper::before,
+.clients-marquee-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15vw;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.clients-marquee-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-deep), transparent);
+}
+
+.clients-marquee-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-deep), transparent);
+}
+
+.clients-marquee {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  width: max-content;
+  animation: scroll-left 30s linear infinite;
+  will-change: transform;
+}
+
+.clients-marquee:hover {
+  animation-play-state: paused;
+}
+
+.client-logo-item {
+  flex-shrink: 0;
+  width: 160px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.client-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.7) opacity(0.6);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.client-logo-item:hover .client-logo-img {
+  filter: grayscale(0%) brightness(1) opacity(1);
+  transform: scale(1.05);
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-marquee {
+    gap: 2.5rem;
+  }
+  .client-logo-item {
+    width: 120px;
+  }
+}

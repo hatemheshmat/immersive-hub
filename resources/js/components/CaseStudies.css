@@ -1,0 +1,129 @@
+.case-studies-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+}
+
+.case-studies-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+}
+
+.cs-nav-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: var(--glass-bg);
+    border-color: var(--color-accent-red);
+}
+
+.case-studies-slider-container {
+    padding-left: max(2rem, calc((100% - 1200px) / 2));
+    width: 100%;
+}
+
+.case-studies-slider {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding-bottom: 2rem;
+}
+
+.case-studies-slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.cs-card {
+    flex: 0 0 450px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 24px;
+    transition: transform 0.3s ease;
+}
+
+.cs-card:hover {
+    transform: translateY(-5px);
+}
+
+.cs-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.cs-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.cs-card:hover .cs-image {
+    transform: scale(1.05);
+}
+
+.cs-company-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(11, 26, 36, 0.8);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 9999px;
+    border: 1px solid var(--glass-border);
+}
+
+.cs-content.glass-card {
+    padding: 2.5rem;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-metric-block {
+    margin-top: auto;
+    align-items: baseline;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .case-studies-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .cs-card {
+        flex: 0 0 85vw;
+    }
+}

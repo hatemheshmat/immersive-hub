@@ -39,9 +39,10 @@
     gap: 1rem;
     padding: 1.5rem;
     border-radius: 16px;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -53,7 +54,8 @@
 .info-icon-box {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #0d9488, #10b981);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -65,7 +67,7 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1rem;
     margin-bottom: 0.25rem;
-    color: var(--color-primary-green);
+    color: var(--color-text-main);
 }
 
 .info-card p {
@@ -111,10 +113,12 @@
 /* Form Card */
 .contact-form-card {
     padding: 2.5rem;
-    background: #fff;
+    background: var(--glass-bg);
     border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
 .form-row {
@@ -140,28 +144,29 @@
     gap: 6px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-primary-green);
+    color: var(--color-text-main);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--glass-border);
     border-radius: 12px;
     font-size: 0.95rem;
     font-family: 'Inter', sans-serif;
     color: var(--color-text-main);
-    background: var(--color-bg-deep);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: var(--overlay-bg);
+    transition: all 0.3s ease;
     outline: none;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #0d9488;
-    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+    background: var(--glass-bg);
 }
 
 .form-group textarea {
@@ -189,19 +194,20 @@
 .success-icon-wrap {
     width: 72px;
     height: 72px;
-    background: rgba(13, 148, 136, 0.1);
+    background: rgba(138, 43, 226, 0.15); /* Purple Tint */
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1.5rem;
+    border: 1px solid rgba(255, 84, 22, 0.3);
 }
 
 .form-success h3 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    color: var(--color-primary-green);
+    color: #8a2be2;
 }
 
 .form-success p {

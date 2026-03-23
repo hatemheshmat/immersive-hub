@@ -32,7 +32,7 @@ const CATALOG_ITEMS = [
     {
         id: 5, title: 'Human Anatomy: Lungs', category: 'Mixed Reality', duration: '22 min',
         description: 'Teacher-led MR lesson: project a 3D lung model into the classroom. Explore the respiratory system.',
-        image: '/vr_mixed_reality.jpg',
+        image: 'https://images.unsplash.com/photo-1593508512255-86ab42a8e620?q=80&w=800&auto=format&fit=crop',
         grade: 'Grades 5-9', subject: 'Biology',
     },
     {
@@ -44,7 +44,7 @@ const CATALOG_ITEMS = [
     {
         id: 7, title: 'Egyptian Museum Tour', category: 'Cultural Heritage', duration: '30 min',
         description: 'Walk through the Egyptian Museum and interact with ancient artifacts and mummies.',
-        image: '/vr_historical_museum.jpg',
+        image: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=800&auto=format&fit=crop',
         grade: 'Grades 4-12', subject: 'Social Studies',
     },
     {
@@ -104,7 +104,7 @@ const LibraryCatalog = () => {
 
     return (
         <section id="catalog" className="section catalog-section">
-            <div className="catalog-header text-center">
+            <div className="catalog-header text-center animate-fade-in-up">
                 <span className="section-badge catalog-badge">VR Library</span>
                 <h2>Explore Our <span className="text-gradient">Full Catalog</span></h2>
                 <p>A diverse library built for every subject and learning style.</p>
@@ -117,6 +117,7 @@ const LibraryCatalog = () => {
                     <input
                         type="text"
                         placeholder="Search experiences…"
+                        className="glass-input"
                         value={searchQuery}
                         onChange={e => setSearchQuery(e.target.value)}
                     />
@@ -128,7 +129,7 @@ const LibraryCatalog = () => {
                         return (
                             <button
                                 key={cat}
-                                className={`filter-chip ${activeCategory === cat ? 'active' : ''}`}
+                                className={`filter-chip glass-card ${activeCategory === cat ? 'active' : ''}`}
                                 onClick={() => setActiveCategory(cat)}
                             >
                                 <Icon size={14} />
@@ -144,10 +145,11 @@ const LibraryCatalog = () => {
 
             {/* Card Grid */}
             <div className="catalog-grid">
-                {filtered.map(item => (
-                    <div key={item.id} className="catalog-card">
+                {filtered.map((item, index) => (
+                    <div key={item.id} className="catalog-card glass-card" style={{ animationDelay: `${index * 50}ms` }}>
                         <div className="catalog-card-img" style={{ backgroundImage: `url(${item.image})` }}>
                             <span className="duration-badge"><Clock size={12} /> {item.duration}</span>
+                            <div className="catalog-card-overlay"></div>
                         </div>
                         <div className="catalog-card-body">
                             <div className="catalog-card-tags">
@@ -168,8 +170,8 @@ const LibraryCatalog = () => {
             </div>
 
             {filtered.length === 0 && (
-                <div className="catalog-empty">
-                    <Search size={40} />
+                <div className="catalog-empty glass-card">
+                    <Search size={40} className="empty-icon" />
                     <h3>No experiences found</h3>
                     <p>Try adjusting your search or category filter.</p>
                 </div>

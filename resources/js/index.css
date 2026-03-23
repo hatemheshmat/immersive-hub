@@ -1,43 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette - Spatial Computing */
-  --color-bg-deep: #0F172A;
-  --color-bg-dark: #1E293B;
-  --color-primary-brand: hsl(270, 70%, 55%);
-  --color-secondary-cyan: hsl(190, 80%, 50%);
-  --color-text-main: #F8FAFC;
-  --color-text-muted: #94A3B8;
+  /* NextWorldXR Cyberpunk Dark Theme Palette - Strict adherence to Refined Surface Option */
+  --color-bg-deep: #0b1a24;
+  /* Deep Navy Background */
+  --color-bg-dark: #20343f;
+  /* Refined Cool Surface / Cards */
+  --color-text-main: #ffffff;
+  /* White Base Typography */
+  --color-accent-red: #8a2be2;
+  /* Purple micro-accent matching Contact Sales branding */
+  --color-primary-brand: #3b82f6;
+  /* Bright Blue (gradient end for CTA) */
+  --color-secondary-cyan: #0d9488;
+  /* Teal */
+  --color-primary-green: #10b981;
+  /* Vibrant Green */
+  --color-primary-blue: #3b82f6;
+  /* Vibrant Blue */
+  --color-accent-orange: #FF5A1F;
+  /* Vibrant Orange */
+  --color-accent-yellow: #FFB800;
+  /* Vibrant Yellow */
+  --color-accent-purple: #8a2be2;
+  /* Updated from #8b5cf6 to match gradient start */
+  --gradient-primary: linear-gradient(135deg, #8a2be2, #00BFFF);
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  /* Translucent White Body */
+
+  --white: #ffffff;
+  --white-80: rgba(255, 255, 255, 0.8);
+  --white-60: rgba(255, 255, 255, 0.6);
 
   /* Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(32, 52, 63, 0.85);
+  /* Frosty Surface tone -> corresponds to #20343f */
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Extremely subtle border */
   --glass-blur: blur(24px);
+  --overlay-bg: rgba(11, 26, 36, 0.6);
+  /* Deep Navy Overlay -> corresponds to #0b1a24 */
+}
 
+
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color: var(--color-text-main);
-  background-color: var(--color-bg-deep);
-
+  background: linear-gradient(135deg, #0a1628, #1a3a52, #0f2922);
+  background-attachment: fixed;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-  /* Deep interactive gradient */
-  background: radial-gradient(circle at top right, var(--color-bg-dark) 0%, var(--color-bg-deep) 100%);
 }
 
 a {
@@ -48,66 +79,209 @@ a {
 }
 
 a:hover {
-  color: var(--color-secondary-cyan);
+  color: var(--color-accent-red);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Outfit', 'Space Grotesk', sans-serif;
-  line-height: 1.2;
-  margin-bottom: 0.5em;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+/* === GLOBAL LAYOUT SYSTEM === */
+
+/* The body should never overflow horizontally on any screen */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
-/* Base App Layout */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+/* Container: centered, padded, full-width on mobile */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
 }
 
-/* Utility Classes */
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-secondary-cyan), var(--color-primary-brand));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cta-button {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 9999px;
-  /* Pill shape for Spatial OS */
-  padding: 12px 28px;
-  font-size: 1rem;
-  font-weight: 500;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-}
-
+/* Section: top/bottom padding only — let container handle left/right */
 .section {
-  padding: 5rem 2rem;
+  padding: 5rem clamp(1rem, 4vw, 3rem);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   position: relative;
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+
+h1,
+.h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5em;
+}
+
+h2,
+.h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5em;
+}
+
+.h4-semi {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.h5-semi {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.b1-reg {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.c1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.white {
+  color: var(--white);
+}
+
+.white-80 {
+  color: var(--white-80);
+}
+
+.white-60 {
+  color: var(--white-60);
+}
+
+.deep {
+  color: var(--color-accent-red);
+}
+
+/* Using accent for tags */
+
+/* Tag styling for sections */
+.caption-tag {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.text-block.var-2 {
+  margin-bottom: 4rem;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, #8a2be2, #00BFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Refined Outline Button */
+.cta-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #8a2be2, #00BFFF);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 32px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.25);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 25px rgba(0, 191, 255, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--glass-bg);
+  z-index: -1;
+  transition: inset 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+  border-radius: 16px;
+}
+
+.cta-button:hover::before {
+  inset: 2px;
+  background: rgba(255, 84, 22, 0.1);
+  /* Subtle orange tint on hover */
+}
+
+.cta-button:hover::before {
+  inset: 2px;
+  background: rgba(255, 84, 22, 0.1);
+  /* Subtle orange tint on hover */
+}
+
+.cta-button:hover {
+  border-color: var(--color-accent-red);
+}
+
+.section {
+  padding: 3rem clamp(1rem, 3vw, 2rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* When .section is INSIDE a rounded section-box, strip its own padding.
+   The box handles all spacing — no double-padding. */
+.section-box>.section,
+.section-box-alt>.section,
+.section-box>*>.section,
+.section-box-alt>*>.section {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
 }
 
 .glass-card {
@@ -119,15 +293,101 @@ h6 {
   border-radius: 20px;
   /* Apple Vision Pro uses soft continuous roundings */
   padding: 2.5rem;
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  /* Lighter shadow for broad compatibility */
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--overlay-bg);
   /* slight glow */
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-primary-brand);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .glass-card {
+    padding: 1.5rem;
+  }
+}
+
+
+/* =================================================================
+   SECTION BOX SYSTEM - 2 Colors, Rounded corners, Full symmetry
+   Color A: Surface dark (#20343f)  — .section-box
+   Color B: Deep Navy (#0b1a24)    — .section-box-alt (matches body bg)
+================================================================= */
+
+/* Outer wrapper — only provides gap BETWEEN rounded boxes */
+.section-wrapper {
+  width: 100%;
+  padding: 0 1rem 1rem 1rem;
+  /* match hero padding, no top padding since bottom padding handles gap */
+}
+
+/* THE ROUNDED BOX — Color A (lighter surface) */
+.section-box {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--color-bg-dark);
+  border-radius: 40px;
+  border: 1px solid var(--glass-border);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+/* THE ROUNDED BOX — Color B (deep navy) */
+.section-box-alt {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--color-bg-deep);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure icons in section boxes are sized consistently */
+.icon-box {
+  width: 52px;
+  height: 52px;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-secondary-cyan);
+}
+
+.icon-box.accent {
+  color: var(--color-accent-red);
+}
+
+.icon-box.primary {
+  color: var(--color-primary-brand);
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 1rem;
+  }
+
+  .section-box,
+  .section-box-alt {
+    border-radius: 20px;
+    padding: 1.75rem 1.25rem;
+  }
 }
 
 /* Animations */
@@ -144,5 +404,22 @@ h6 {
 }
 
 .animate-fade-in-up {
+  opacity: 0;
   animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
 }

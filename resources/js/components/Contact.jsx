@@ -83,7 +83,7 @@ const Contact = () => {
                     {submitted ? (
                         <div className="form-success">
                             <div className="success-icon-wrap">
-                                <Send size={32} color="#0d9488" />
+                                <Send size={32} color="#a3e635" />
                             </div>
                             <h3>Thank You!</h3>
                             <p>Your message has been sent. Our team will get back to you within 24 hours.</p>

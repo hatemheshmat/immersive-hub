@@ -1,48 +1,62 @@
 import React from 'react';
-import { XCircle, CheckCircle2 } from 'lucide-react';
+import { Brain, Zap, Target } from 'lucide-react';
 import './EducationalApproach.css';
 
 const EducationalApproach = () => {
     return (
         <section id="approach" className="section approach-section">
-            <div className="approach-header">
-                <h2>The Evolution of <span className="text-gradient">Learning</span></h2>
-                <p>Moving from passive observation to active, experiential comprehension.</p>
-            </div>
-
-            <div className="approach-content-wrapper">
-                <div className="approach-image-container">
-                    <img src="/vr_students.jpg" alt="Students using VR" className="approach-image" />
-                    <div className="image-glow"></div>
+            <div className="container">
+                <div className="approach-header">
+                    <div className="caption-tag">
+                        <span className="c1 white-60">WHY IMMERSIVE HUB WORKS</span>
+                    </div>
+                    <h2 className="h2 white">
+                        The evolution of <br />
+                        <span className="text-gradient">active learning.</span>
+                    </h2>
+                    <p className="b1-reg white-80" style={{ maxWidth: '600px', margin: '0 auto' }}>
+                        Moving from passive observation to experiential comprehension. Real retention happens when students actively participate in their education.
+                    </p>
                 </div>
 
                 <div className="approach-grid">
                     {/* The Old Way */}
                     <div className="approach-card old-way glass-card">
-                        <div className="card-badge warning">The Problem</div>
-                        <h3>Passive Learning</h3>
-                        <p>
-                            Traditional methods often leave students struggling to visualize complex,
-                            abstract scientific concepts. Textbooks and 2D videos can lead to disengagement.
+                        <div className="card-top">
+                            <h3 className="h4-semi white">Passive Learning</h3>
+                            <div className="card-badge warning">The Problem</div>
+                        </div>
+                        <p className="b1-reg white-60">
+                            Traditional methods leave students struggling to visualize complex,
+                            abstract scientific concepts. Textbooks and 2D videos lead to disengagement and low retention.
                         </p>
-                        <ul className="approach-list">
-                            <li><XCircle className="icon-warning" size={20} /> Abstract theories remain abstract</li>
-                            <li><XCircle className="icon-warning" size={20} /> Low knowledge retention rates</li>
-                        </ul>
                     </div>
 
                     {/* The Immersive Way */}
-                    <div className="approach-card new-way glass-card">
-                        <div className="card-badge success">Our Solution</div>
-                        <h3>Active Immersive Learning</h3>
-                        <p>
+                    <div className="approach-card new-way style-accent">
+                        <div className="card-top">
+                            <h3 className="h4-semi white">Active Immersive</h3>
+                            <div className="card-badge success">Our Solution</div>
+                        </div>
+                        <p className="b1-reg white-80">
                             Immersive Hub provides risk-free, gamified environments where academic concepts visually come to life,
                             guaranteeing specific learning outcomes in a way that feels like play.
                         </p>
-                        <ul className="approach-list">
-                            <li><CheckCircle2 className="icon-success" size={20} /> Deep experiential knowledge retention</li>
-                            <li><CheckCircle2 className="icon-success" size={20} /> 100% safe, limitless experimentation</li>
-                        </ul>
+                        
+                        <div className="approach-metrics">
+                            <div className="metric">
+                                <Brain size={24} className="deep" />
+                                <span className="b1-reg white">4x Faster Training</span>
+                            </div>
+                            <div className="metric">
+                                <Zap size={24} className="deep" />
+                                <span className="b1-reg white">275% Confidence Boost</span>
+                            </div>
+                            <div className="metric">
+                                <Target size={24} className="deep" />
+                                <span className="b1-reg white">90% Retention Rate</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
