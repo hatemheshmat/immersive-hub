@@ -25,7 +25,8 @@
 /* ---- Carousel wrapper — clips overflow edge cards and anchors cursor ---- */
 .t-carousel-wrap {
     position: relative;
-    cursor: none; /* hide default cursor inside, we use the custom one */
+    cursor: none;
+    /* hide default cursor inside, we use the custom one */
     user-select: none;
 }
 
@@ -218,15 +219,18 @@
         min-width: calc(100vw - 4rem);
         max-width: calc(100vw - 4rem);
     }
+
     .testimonials-stats-bar {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
+
     /* Restore default cursor on mobile (no hover) */
     .t-carousel-wrap,
     .t-carousel-track {
         cursor: default;
     }
+
     .t-custom-cursor {
         display: none;
     }

@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  /* NextWorldXR Cyberpunk Dark Theme Palette - Strict adherence to Refined Surface Option */
+  /* NextWorldXR Cyberpunk Dark Theme Palette */
   --color-bg-deep: #0b1a24;
   /* Deep Navy Background */
-  --color-bg-dark: #20343f;
-  /* Refined Cool Surface / Cards */
+  --color-bg-dark: transparent;
+  /* Removed solid #20343f — now uses frosted glass instead */
   --color-text-main: #ffffff;
   /* White Base Typography */
   --color-accent-red: #8a2be2;
@@ -32,14 +32,15 @@
   --white-80: rgba(255, 255, 255, 0.8);
   --white-60: rgba(255, 255, 255, 0.6);
 
-  /* Glassmorphism */
-  --glass-bg: rgba(32, 52, 63, 0.85);
-  /* Frosty Surface tone -> corresponds to #20343f */
-  --glass-border: rgba(255, 255, 255, 0.08);
-  /* Extremely subtle border */
-  --glass-blur: blur(24px);
+  /* Glassmorphism — Frosted Depth */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  /* Barely visible white tint — colors bleed through from background */
+  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Razor-thin white edge */
+  --glass-blur: blur(16px);
+  /* Frosted glass depth */
   --overlay-bg: rgba(11, 26, 36, 0.6);
-  /* Deep Navy Overlay -> corresponds to #0b1a24 */
+  /* Deep Navy Overlay */
 }
 
 
@@ -335,7 +336,7 @@ h2,
 .section-box {
   width: 100%;
   margin: 0 auto;
-  background: var(--color-bg-dark);
+  background: #0000004d;
   border-radius: 40px;
   border: 1px solid var(--glass-border);
   padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3.5rem);
@@ -347,12 +348,33 @@ h2,
 .section-box-alt {
   width: 100%;
   margin: 0 auto;
-  background: var(--color-bg-deep);
+  background: #0e3f4d85;
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3.5rem);
   position: relative;
   overflow: hidden;
+}
+
+/* Static starfield — same as hero but no animation */
+.section-box-alt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 80px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 150px 160px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 250px 120px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 320px 290px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2.5px 2.5px at 450px 10px, #fff, rgba(0, 0, 0, 0));
+  background-size: 400px 400px;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Ensure icons in section boxes are sized consistently */
@@ -422,4 +444,77 @@ h2,
 
 .delay-400 {
   animation-delay: 400ms;
+}
+
+/* --- SPATIAL DEPTH ATMOSPHERE: BREATHING ORBS --- */
+#bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  /* Massive blur creates the soft, enveloping atmospheric glow */
+  filter: blur(160px);
+  animation: breathe 16s infinite alternate ease-in-out;
+  opacity: 0.45;
+}
+
+/* Cyan orb — top-left, bleeds into glass panels as they scroll */
+.orb-cyan {
+  background: radial-gradient(circle, #00D2FF, #0066cc);
+  width: 70vw;
+  height: 70vw;
+  top: -20%;
+  left: -20%;
+}
+
+/* Purple orb — bottom-right, complementary depth */
+.orb-purple {
+  background: radial-gradient(circle, #8A2BE2, #4a0080);
+  width: 55vw;
+  height: 55vw;
+  bottom: -15%;
+  right: -15%;
+  animation-delay: -8s;
+}
+
+@keyframes breathe {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: scale(1.2) translate(40px, -40px);
+    opacity: 0.55;
+  }
+}
+
+/* --- FROSTED DEPTH: GLASS PANEL --- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.glass-panel:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 210, 255, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 15px rgba(0, 210, 255, 0.1);
+}
+
+.glass-nav {
+  background: rgba(11, 19, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }

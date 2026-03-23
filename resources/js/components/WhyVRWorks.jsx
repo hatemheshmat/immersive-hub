@@ -34,14 +34,14 @@ const WhyVRWorks = () => {
                     <h2 className="h2 text-gradient evolution-title">The Evolution of Learning</h2>
                     <p className="b1-reg white-60 evolution-subtitle">Moving from passive observation to active, experiential comprehension.</p>
                 </div>
-                
+
                 <div className="evolution-list-wrapper">
                     {/* The Problem */}
                     <div className="evolution-flex-row">
                         <div className="evolution-image-side">
                             <img src="/images/passive_students.jpg" alt="Passive Learning" className="evolution-side-img" />
                         </div>
-                        <div className="evolution-card problem-card">
+                        <div className="glass-panel evolution-card problem-card">
                             <div className="evolution-card-badge">The Problem</div>
                             <h3 className="evolution-card-title">Passive Learning</h3>
                             <p className="evolution-card-desc">Traditional methods often leave students struggling to visualize complex, abstract scientific concepts. Textbooks and 2D videos can lead to disengagement.</p>
@@ -63,7 +63,7 @@ const WhyVRWorks = () => {
                         <div className="evolution-image-side">
                             <img src="/images/vr_students.png" alt="VR Learning" className="evolution-side-img" />
                         </div>
-                        <div className="evolution-card active-card">
+                        <div className="glass-panel evolution-card active-card">
                             <div className="evolution-card-badge">Our Solution</div>
                             <h3 className="evolution-card-title">Active Immersive Learning</h3>
                             <p className="evolution-card-desc">Immersive Hub provides risk-free, gamified environments where academic concepts visually come to life, guaranteeing specific learning outcomes in a way that feels like play.</p>
@@ -82,7 +82,7 @@ const WhyVRWorks = () => {
                 </div>
             </div>
 
-            {/* New Compact Benefits Section */}
+            {/* Compact Benefits Section */}
             <div className="container" style={{ paddingBottom: '0', maxWidth: '1400px' }}>
                 <div className="why-vr-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
                     <h2 className="h2 text-gradient">
@@ -92,12 +92,11 @@ const WhyVRWorks = () => {
 
                 <div className="benefits-grid">
                     {VR_BENEFITS.map((item, index) => (
-                        <div key={index} className="benefit-compact-card glass-card">
+                        <div key={index} className="glass-panel benefit-compact-card">
                             <div className="benefit-text-content">
                                 <h3 className="h4-semi white benefit-title" style={{ marginBottom: '0.75rem' }}>{item.title}</h3>
                                 <p className="b2-reg white-60 benefit-desc" style={{ marginBottom: '1.5rem' }}>{item.description}</p>
                             </div>
-                            
                             <div className="benefit-stat-box">
                                 <div className="stat-value deep h2" style={{ marginBottom: '0' }}>{item.stat}</div>
                                 <p className="b2-medium white-80 stat-label" style={{ margin: 0 }}>{item.statLabel}</p>

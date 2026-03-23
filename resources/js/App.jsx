@@ -18,7 +18,7 @@ axios.defaults.withCredentials = true;
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
   // Check initial auth status
   useEffect(() => {
     axios.get('/api/user')
@@ -28,6 +28,10 @@ function App() {
 
   return (
     <div className="app-container">
+      <div id="bg-orbs">
+        <div className="orb orb-cyan"></div>
+        <div className="orb orb-purple"></div>
+      </div>
       <CustomCursor />
       <Header />
       <Routes>
