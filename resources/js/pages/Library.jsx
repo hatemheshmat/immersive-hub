@@ -7,7 +7,7 @@ const Library = () => {
     }, []);
 
     return (
-        <main style={{ paddingTop: '80px', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <main className="page-simple-main">
             <LibraryCatalog />
         </main>
     );

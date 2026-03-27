@@ -49,11 +49,11 @@ const Footer = () => {
                 {/* Right Column */}
                 <div className="footer-right-col">
                     <div className="footer-content-wrapper">
-                        <nav className="footer-top-nav">
+                        <nav className="footer-top-nav" aria-label="Footer">
                             <Link to="/library" className="nav-item">VR LIBRARY</Link>
-                            <Link to="#" className="nav-item">ANALYTICS</Link>
-                            <Link to="#" className="nav-item">CUSTOM VR</Link>
-                            <Link to="#pricing" className="nav-item">PRICING</Link>
+                            <Link to="/#analytics" className="nav-item">ANALYTICS</Link>
+                            <Link to="/contact-us" className="nav-item">CUSTOM VR</Link>
+                            <Link to="/#pricing" className="nav-item">PRICING</Link>
                         </nav>
 
                         <a href="mailto:info@immersivehub.org" className="footer-huge-email text-gradient">

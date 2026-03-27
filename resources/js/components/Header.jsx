@@ -5,19 +5,29 @@ import './Header.css';
 import logoImg from '../assets/logo.png';
 
 const NAV_ITEMS = [
-  { label: 'HOME', href: '/' },
-  { label: 'OUR LIBRARY', href: '/library' },
-  { label: 'PRICING', href: '#pricing' },
-  { label: 'CUSTOM PRODUCTS', href: '/custom' },
-  { 
-    label: 'LEARN MORE', 
+  { label: 'HOME', to: '/' },
+  { label: 'OUR LIBRARY', to: '/library' },
+  { label: 'PRICING', to: '/#pricing' },
+  { label: 'CUSTOM PRODUCTS', to: '/contact-us' },
+  {
+    label: 'LEARN MORE',
     dropdown: [
-        { label: 'CASE STUDIES', href: '/case-studies' },
-        { label: 'FAQ', href: '/faq' },
-        { label: 'BLOG', href: '/blog' }
-    ]
+      { label: 'CASE STUDIES', to: '/case-studies' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'BLOG', to: '/blog' },
+    ],
   },
 ];
+
+function navItemActive(item, location) {
+  if (item.to === '/#pricing') {
+    return location.pathname === '/' && location.hash === '#pricing';
+  }
+  if (item.to === '/') {
+    return location.pathname === '/' && !location.hash;
+  }
+  return item.to && location.pathname === item.to;
+}
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,36 +41,40 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [location.pathname, location.hash]);
+
   return (
     <header className={`header-3-pill ${isScrolled ? 'header-scrolled' : ''}`}>
       <div className="header-pill pill-logo-nav glass-card">
         <Link to="/" className="pill-logo-link">
-            <img src={logoImg} alt="Immersive Hub" className="pill-logo-img" />
+          <img src={logoImg} alt="Immersive Hub" className="pill-logo-img" />
         </Link>
 
-        <nav className="pill-inline-nav desktop-only">
+        <nav className="pill-inline-nav desktop-only" aria-label="Primary">
           {NAV_ITEMS.map((item) => {
             if (item.dropdown) {
-               return (
-                 <div className="nav-dropdown-wrapper" key={item.label}>
-                   <span className="pill-nav-link" style={{cursor: 'pointer'}}>
-                     {item.label}
-                   </span>
-                   <div className="nav-dropdown-menu glass-card">
-                     {item.dropdown.map(sub => (
-                       <Link key={sub.label} to={sub.href} className="dropdown-link">
-                         {sub.label}
-                       </Link>
-                     ))}
-                   </div>
-                 </div>
-               );
+              return (
+                <div className="nav-dropdown-wrapper" key={item.label}>
+                  <span className="pill-nav-link nav-dropdown-trigger" tabIndex={0}>
+                    {item.label}
+                  </span>
+                  <div className="nav-dropdown-menu glass-card" role="menu">
+                    {item.dropdown.map((sub) => (
+                      <Link key={sub.label} to={sub.to} className="dropdown-link" role="menuitem">
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
             }
             return (
               <Link
                 key={item.label}
-                to={item.href}
-                className={`pill-nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                to={item.to}
+                className={`pill-nav-link ${navItemActive(item, location) ? 'active' : ''}`}
               >
                 {item.label}
               </Link>
@@ -70,34 +84,57 @@ const Header = () => {
       </div>
 
       <div className="header-pill pill-actions glass-card desktop-only">
-        <button className="btn-pill-contact" onClick={() => navigate('/contact-us')}>CONTACT SALES</button>
-        <button className="btn-pill-login" onClick={() => navigate('/login')}>LOGIN</button>
+        <button type="button" className="btn-pill-contact" onClick={() => navigate('/contact-us')}>
+          CONTACT SALES
+        </button>
+        <button type="button" className="btn-pill-login" onClick={() => navigate('/admin')}>
+          LOGIN
+        </button>
       </div>
 
-      {/* Mobile toggle */}
       <div className="header-pill pill-mobile-toggle glass-card mobile-only">
         <button
+          type="button"
           className="mobile-toggle"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
-          aria-label="Toggle Menu"
+          aria-expanded={isMobileOpen}
+          aria-controls="mobile-primary-nav"
+          aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
         >
           {isMobileOpen ? <X size={24} className="white" /> : <Menu size={24} className="white" />}
         </button>
       </div>
 
-      {/* Mobile Menu Drawer */}
       {isMobileOpen && (
-        <div className="mobile-menu glass-card">
-          {NAV_ITEMS.map((item) => (
-             <Link key={item.label} to={item.href} className="mobile-nav-link" onClick={() => setIsMobileOpen(false)}>
-               {item.label}
-             </Link>
-          ))}
-          <div className="mobile-actions" style={{display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1.5rem'}}>
-             <button className="btn-pill-contact" onClick={() => navigate('/contact-us')}>CONTACT SALES</button>
-             <button className="btn-pill-login" onClick={() => navigate('/login')}>LOGIN</button>
+        <nav id="mobile-primary-nav" className="mobile-menu glass-card" aria-label="Mobile primary">
+          {NAV_ITEMS.map((item) => {
+            if (item.dropdown) {
+              return (
+                <div key={item.label} className="mobile-nav-group">
+                  <span className="mobile-nav-heading">{item.label}</span>
+                  {item.dropdown.map((sub) => (
+                    <Link key={sub.label} to={sub.to} className="mobile-nav-link mobile-nav-sublink">
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              );
+            }
+            return (
+              <Link key={item.label} to={item.to} className="mobile-nav-link">
+                {item.label}
+              </Link>
+            );
+          })}
+          <div className="mobile-actions">
+            <button type="button" className="btn-pill-contact" onClick={() => navigate('/contact-us')}>
+              CONTACT SALES
+            </button>
+            <button type="button" className="btn-pill-login" onClick={() => navigate('/admin')}>
+              LOGIN
+            </button>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

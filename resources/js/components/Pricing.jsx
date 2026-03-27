@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Check, Gift } from 'lucide-react';
 import './Pricing.css';
 
@@ -26,6 +27,9 @@ const Pricing = () => {
                         <li><Check className="check" size={20} /> Software access for your school's existing hardware.</li>
                         <li><Check className="check" size={20} /> Teacher Handbooks & Lesson Plans included.</li>
                     </ul>
+                    <Link to="/contact-us" className="pricing-card-cta">
+                        Get started
+                    </Link>
                 </div>
 
                 {/* Essentials Tier */}
@@ -45,6 +49,9 @@ const Pricing = () => {
                         <li><Check className="check highlight" size={20} /> <span>Includes <strong>5 Custom Educational VR Projects</strong> built for your curriculum.</span></li>
                         <li><Check className="check" size={20} /> Free promotional VR tour of your school for your own marketing.</li>
                     </ul>
+                    <Link to="/contact-us" className="pricing-card-cta pricing-card-cta-accent">
+                        Get started
+                    </Link>
                 </div>
 
                 {/* Suite Tier (Full Width Bento Item) */}
@@ -71,6 +78,9 @@ const Pricing = () => {
                             <Gift className="bonus-icon" size={20} />
                             <p><strong>Special 1-Year Renewal Bonus:</strong> Sign a full-year contract and receive <strong>3 EXTRA VR Headsets absolutely FREE</strong>!</p>
                         </div>
+                        <Link to="/contact-us" className="pricing-card-cta pricing-card-cta-premium">
+                            Contact us for Premium
+                        </Link>
                     </div>
                 </div>
             </div>

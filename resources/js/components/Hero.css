@@ -10,11 +10,11 @@
     padding: 10rem 0 6rem 0;
     /* plenty of top space for 3-pill navbar */
     background:
-        radial-gradient(circle at top left, rgba(0, 255, 136, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at top right, rgba(0, 119, 255, 0.1) 0%, transparent 35%),
-        radial-gradient(circle at 85% 90%, rgba(0, 255, 136, 0.06) 0%, transparent 30%),
-        rgba(5, 10, 18, 0.6);
-    border-radius: 40px;
+        radial-gradient(circle at 10% 20%, rgba(0, 191, 255, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(138, 43, 226, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 80% 95%, rgba(255, 90, 31, 0.06) 0%, transparent 45%),
+        rgba(4, 8, 14, 0.55);
+    border-radius: var(--radius-xl);
     overflow: hidden;
     min-height: calc(100vh - 2rem);
     display: flex;
@@ -83,8 +83,8 @@
 .hero-caption-tag {
     border-radius: 12px;
     padding: 6px 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
 }
@@ -103,7 +103,7 @@
 }
 
 .text-gradient-blue {
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -129,11 +129,12 @@
 
 .hero-input-wrapper {
     flex: 1;
-    background: #171d24;
-    /* darker pill */
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
     padding: 0.25rem;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .hero-email-input {
@@ -147,13 +148,13 @@
 }
 
 .hero-email-input::placeholder {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.38);
     letter-spacing: 1px;
     font-weight: 600;
 }
 
 .hero-cta-btn {
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     color: #fff;
     border: none;
     border-radius: 16px;
@@ -244,12 +245,12 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
+    background: var(--color-secondary-cyan);
+    box-shadow: 0 0 10px rgba(5, 204, 244, 0.55);
 }
 
 .hero-green-text {
-    color: #10b981;
+    color: var(--color-secondary-cyan);
     font-weight: 700;
     font-size: 0.75rem;
 }

@@ -60,7 +60,7 @@ const SPEED = 0.5; // px per animation frame
 const StarRating = ({ count }) => (
     <div className="t-star-row">
         {Array.from({ length: count }).map((_, i) => (
-            <Star key={i} size={16} fill="#f59e0b" color="#f59e0b" />
+            <Star key={i} size={16} fill="#05CCF4" color="#05CCF4" />
         ))}
     </div>
 );

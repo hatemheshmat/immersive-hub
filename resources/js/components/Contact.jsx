@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { Send, MapPin, Phone, Mail, MessageSquare, User, Building2, ArrowRight, Facebook, Instagram, Linkedin } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
+    const location = useLocation();
     const [formData, setFormData] = useState({
         name: '', email: '', school: '', role: '', message: ''
     });
     const [status, setStatus] = useState('idle');
     const [submitted, setSubmitted] = useState(false);
+
+    useEffect(() => {
+        const prefill = location.state?.prefillEmail;
+        if (typeof prefill === 'string' && prefill.trim()) {
+            setFormData((prev) => ({ ...prev, email: prefill.trim() }));
+        }
+    }, [location.state]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -73,8 +82,8 @@ const Contact = () => {
                     {/* Quick links */}
                     <div className="contact-social-row" style={{ display: 'flex', gap: '15px' }}>
                         <a href="https://www.facebook.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Facebook"><Facebook size={28} /></a>
-                        <a href="https://www.instagram.com/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><Instagram size={28} /></a>
-                        <a href="https://www.linkedin.com/company/ImmersiveHub.Official/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Linkedin size={28} /></a>
+                        <a href="https://www.instagram.com/immersive.hub/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="Instagram"><Instagram size={28} /></a>
+                        <a href="https://www.linkedin.com/company/immersivehub/" target="_blank" rel="noopener noreferrer" className="social-icon" aria-label="LinkedIn"><Linkedin size={28} /></a>
                     </div>
                 </div>
 

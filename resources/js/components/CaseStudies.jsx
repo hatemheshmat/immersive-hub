@@ -58,11 +58,11 @@ const CaseStudies = () => {
                     </div>
                     
                     <div className="cs-nav-controls">
-                        <button className="nav-btn" onClick={() => scroll('left')}>
-                            <ArrowLeft size={24} />
+                        <button type="button" className="nav-btn" onClick={() => scroll('left')} aria-label="Scroll case studies left">
+                            <ArrowLeft size={24} aria-hidden />
                         </button>
-                        <button className="nav-btn" onClick={() => scroll('right')}>
-                            <ArrowRight size={24} />
+                        <button type="button" className="nav-btn" onClick={() => scroll('right')} aria-label="Scroll case studies right">
+                            <ArrowRight size={24} aria-hidden />
                         </button>
                     </div>
                 </div>

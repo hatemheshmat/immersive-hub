@@ -35,7 +35,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #8a2be2;
+    color: var(--color-accent-red);
     font-weight: 600;
     text-decoration: none;
     font-size: 0.95rem;
@@ -43,7 +43,7 @@
 }
 
 .lib-view-all:hover {
-    color: #00BFFF;
+    color: var(--color-secondary-cyan);
     transform: translateX(4px);
 }
 

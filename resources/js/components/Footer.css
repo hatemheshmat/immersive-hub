@@ -87,7 +87,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     color: #fff;
     padding: 14px 42px;
     border-radius: 16px; /* Matched to Hero and Booking buttons */

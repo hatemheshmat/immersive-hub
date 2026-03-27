@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import WhyVRWorks from '../components/WhyVRWorks';
 import ImmersiveLibrary from '../components/ImmersiveLibrary';
+import AnalyticsPromo from '../components/AnalyticsPromo';
 import AIAdvantage from '../components/AIAdvantage';
 import Testimonials from '../components/Testimonials';
 import Pricing from '../components/Pricing';
@@ -24,6 +25,13 @@ const Home = () => {
             <div className="section-wrapper">
                 <div className="section-box-alt">
                     <ImmersiveLibrary />
+                </div>
+            </div>
+
+            {/* VR analytics (footer / nav anchor) */}
+            <div className="section-wrapper">
+                <div className="section-box">
+                    <AnalyticsPromo />
                 </div>
             </div>
 

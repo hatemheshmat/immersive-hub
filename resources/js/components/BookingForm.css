@@ -27,9 +27,9 @@
 .booking-badge {
     display: inline-block;
     padding: 6px 16px;
-    background: rgba(255, 84, 22, 0.12);
+    background: rgba(5, 204, 244, 0.10);
     color: var(--color-secondary-cyan);
-    border: 1px solid rgba(255, 84, 22, 0.3);
+    border: 1px solid rgba(5, 204, 244, 0.25);
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 700;
@@ -131,8 +131,8 @@
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #8a2be2;
-    box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.15);
+    border-color: rgba(143, 32, 195, 0.7);
+    box-shadow: 0 0 0 3px rgba(143, 32, 195, 0.16);
     background: rgba(255, 255, 255, 0.06);
 }
 
@@ -144,7 +144,7 @@
 /* Submit button */
 .submit-btn {
     align-self: flex-start;
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     color: #fff;
     border: none;
     padding: 14px 36px;
@@ -158,8 +158,7 @@
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    background: #ff6a33;
-    color: #fff;
+    filter: brightness(1.08);
 }
 
 .submit-btn:disabled {

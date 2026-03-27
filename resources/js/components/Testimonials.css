@@ -200,7 +200,7 @@
 .stat-value {
     font-size: clamp(1.8rem, 3.5vw, 2.75rem);
     font-weight: 700;
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

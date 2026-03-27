@@ -58,7 +58,7 @@
 }
 
 .new-way.style-accent {
-    background: linear-gradient(135deg, #8a2be2, #00BFFF);
+    background: var(--gradient-primary);
     border: none;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(0, 191, 255, 0.2);
     position: relative;
@@ -73,7 +73,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgba(143, 32, 195, 0.25) 0%, transparent 70%);
     pointer-events: none;
 }
 
